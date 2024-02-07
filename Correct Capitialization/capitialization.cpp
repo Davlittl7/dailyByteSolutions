@@ -13,10 +13,10 @@ using namespace std;
 /*
 * Daily Byte: Correct Capitialization Solution Idea
 * Create a boolean function that takes in a string parameter.
-* First two parts of func check if it all lowercase or all uppercase w/ fors
-* If it makes it through the entire for loop(s) and it is all upper or lower
+* First part of func check if it is all uppercase w/ for loop
+* If it makes it through the entire for loop and it is all upper
 * the function returns true (based on int var used to count correctness).
-* If not, func will continue to third part of function 
+* If not, func will continue to second part of function 
 * Will ignore first letter since it is irrelevant at this point in for loop.
 * check to see if there is any uppercase letters within the rest of the string.
 * If so, return false. Otherwise, for loop will finish and return true
@@ -35,15 +35,8 @@ bool isCorrectCapitialization(string capitalCheck) {
 	}
 	if (correctCount == capitalCheck.length()) return true;
 
-	//Second for loop to check if all lowercase
-	correctCount = 0; //reset correct count so there are no inaccuracies
-	for (char letter : capitalCheck) {
-		if (islower(letter)) ++correctCount;
-		else break;
-	}
-	if (correctCount == capitalCheck.length()) return true;
-
-	//Third for loop to check if there is an uppercase char anywhere
+	 
+	//Second for loop to check if there is an uppercase char anywhere
 	//but the beginning, and will return false if there is. 
 	for (int i = 1; i < capitalCheck.length(); ++i) 
 		if (isupper(capitalCheck[i])) return false;
