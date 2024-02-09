@@ -33,15 +33,13 @@ string longestCommonPrefix(string words[], int size) {
 	//prefix if they are equal
 	string prefix = "";
 	for (int i = 0; i < smallestStrLength; ++i) {
-		for (int j = 0; j < size; ++j) { //Nested for to jump to each char
-			
-			if (words[j][i] != words[0][i]) return prefix;
-		}
-		//Ensures that there are no out of bounds issues with if-else
-		//Adding new character to prefix if they are at the end of one of the words
-		//and still got passed the inner for loop
-		if ((i + 1) < smallestStrLength) prefix += words[i][i];
-		else prefix += words[size - 1][i];
+		char currentChar = words[0][i]; //Set up the current char for eval
+		for (int j = 0; j < size; ++j) //Nested for to jump to each char
+			if (words[j][i] != currentChar) return prefix;
+		
+		//Adds currentChar to prefix var if func makes it through for loop.
+		//Which shows that the currentChar is common among all the strings.
+		prefix += currentChar;
 	}
 	return prefix;
 }
